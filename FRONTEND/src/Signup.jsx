@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 
-export default function Login(){
+export default function Signup(){
 
     const [username,setUsername]=useState("")
     const [password ,setPassword]=useState("")
@@ -10,7 +10,7 @@ export default function Login(){
     const handlesubmit =async (e)=>{
         e.preventDefault()
         try{
-            const response=await fetch('http://localhost:3000/api/login',{
+            const response=await fetch('http://localhost:3000/api/signup',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'
@@ -60,8 +60,6 @@ export default function Login(){
             <button type="submit" className="w-full bg-black text-white h-8 rounded-xl ">Submit</button>
             
         </form>
-        <span>Haven't signed up?</span>
-        <button onClick=>Sign Up</button>
         </div>
         </div>
         </>
