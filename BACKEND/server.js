@@ -5,6 +5,10 @@ const jwt=require('jsonwebtoken')
 const cors=require('cors')
 const login=require("./routes/login.js")
 const crud=require("./routes/crud.js")
+const admin=require("./routes/admin.js")
+const { authenticateToken, isAdmin } = require('./middleware/auth.js')
+
+
 const app=express()
 const PORT=3000
 
@@ -12,21 +16,9 @@ app.use(cors())
 app.use('/api',login)
 
 
-function authenticateToken(req,res,next){
-    const authHeader=req.headers['authorization']
-    const token= authHeader && authHeader.split(' ')[1]
-    if(!token) return res.status(500).send('You have not logged in')
-    
-    jwt.verify(token , process.env.ACCESS_TOKEN_SECRET, (err,user) => {
-      if(err) return res.status(500).send("pehle hi fursat mein nikal")
-      req.user=user
-      next()
-
-    })
-
-}
 
 app.use('/enter',authenticateToken,crud)
+app.use('/admin',authenticateToken,isAdmin,admin)
 
 app.listen(PORT , () =>{
     console.log("server is listening......!")
@@ -40,6 +32,6 @@ mongoose.connect(`${process.env.CONNECTION_STRING}`)
 
 
 
-module.exports={authenticateToken}
+
 
 

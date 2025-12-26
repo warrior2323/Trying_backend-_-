@@ -21,12 +21,15 @@ export default function Signup(){
             const data=await response.json()
 
             if(response.ok){
+
                 localStorage.setItem('userToken' , data.accessToken)
 
                 alert("Login successfull")
                 navigate('/CRUD')
+                
+
             }else{
-                alert("login failed")
+                alert(data)
             }
 
         }catch(error){

@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Login from "./login"
 import Crud from "./Crud"
 import Signup from "./Signup"
+import AdminCrud from "./admin_crud"
+
 
 const router=createBrowserRouter(
   [
@@ -17,6 +19,10 @@ const router=createBrowserRouter(
     {
       path:"/crud",
       element:<Crud/>
+    },
+    {
+      path:"/admin/crud",
+      element:<AdminCrud/>
     }
   ]
 )

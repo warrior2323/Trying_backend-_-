@@ -1,6 +1,6 @@
 import { useState ,useRef } from "react"
 
-export default function Crud(){
+export default function AdminCrud(){
     const [products,setProducts]=useState([])
     const idRef=useRef(null)
     const createRef=useRef(null)
@@ -12,7 +12,7 @@ export default function Crud(){
         e.preventDefault()
         const token=localStorage.userToken
         try{
-            const response=await fetch('http://localhost:3000/enter/POSTS',{
+            const response=await fetch('http://localhost:3000/admin/read',{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -44,14 +44,13 @@ export default function Crud(){
         idRef.current.value=""
         
         try{
-            const response=await fetch(`http://localhost:3000/enter/delete/${value}`,{
+            const response=await fetch(`http://localhost:3000/admin/delete/${value}`,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",
                     "Authorization" : `Bearer ${token}`
                 }
             })
-            const data = await response.json()
             if(response.ok){
                 alert(data)
             }else{
@@ -72,7 +71,7 @@ export default function Crud(){
             alert("please enter some data to be appended in the server")
             return 
         }
-        try{const response=await fetch('http://localhost:3000/enter/posts',{
+        try{const response=await fetch('http://localhost:3000/admin/create',{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -107,7 +106,7 @@ export default function Crud(){
             alert("enter a value to upadate bro 0_0")
         }
 
-        try{const response =fetch(`http://localhost:3000/enter/posts/${id}`,{
+        try{const response =fetch(`http://localhost:3000/admin/update/${id}`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
@@ -130,7 +129,7 @@ export default function Crud(){
 
     return(
         <section className="flex flex-col">
-        <a onClick={handleread} className="cursor-pointer font-bold">Read your projects</a>
+        <a onClick={handleread} className="cursor-pointer font-bold">Read products</a>
         {products && products}
         <a className="cursor-pointer font-bold" >Create a new product entry </a>
         <form onSubmit={handlecreate} >

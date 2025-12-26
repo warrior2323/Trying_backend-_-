@@ -21,10 +21,19 @@ export default function Login(){
             const data=await response.json()
 
             if(response.ok){
+                if(data.accessToken){
                 localStorage.setItem('userToken' , data.accessToken)
 
                 alert("Login successfull")
-                navigate('/CRUD')
+                if(username==='KHEERA'){
+                    navigate('/admin/crud')
+                }
+                else{
+                    navigate('/CRUD')
+                }
+            }else{
+                alert(data)
+            }
             }else{
                 alert("login failed")
             }
@@ -61,7 +70,7 @@ export default function Login(){
             
         </form>
         <span>Haven't signed up?</span>
-        <button onClick=>Sign Up</button>
+        <button onClick={()=>{navigate('/signup')}} className="cursor-pointer">Sign Up</button>
         </div>
         </div>
         </>
