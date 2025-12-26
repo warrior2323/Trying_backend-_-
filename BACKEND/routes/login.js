@@ -65,7 +65,7 @@ router.post('/login' ,async (req,res) => {
     }
 })
 
-mongoose.connect('mongodb+srv://warrior:ze82vEtS0WLbQuh6@warrior.7czaqqn.mongodb.net/?appName=warrior')
+mongoose.connect(`${process.env.CONNECTION_STRING}`)
   .then(() => {console.log('Connected!')})
   .catch((err)=>{console.log("connection failed!");
     console.error(err.message)
