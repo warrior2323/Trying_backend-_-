@@ -1,4 +1,5 @@
 import { useState ,useRef } from "react"
+const API_BASE_URL="https://tryingbackend-production.up.railway.app"
 
 export default function Crud(){
     const [products,setProducts]=useState([])
@@ -12,7 +13,7 @@ export default function Crud(){
         e.preventDefault()
         const token=localStorage.userToken
         try{
-            const response=await fetch('http://localhost:3000/enter/POSTS',{
+            const response=await fetch(`${API_BASE_URL}/enter/POSTS`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -44,7 +45,7 @@ export default function Crud(){
         idRef.current.value=""
         
         try{
-            const response=await fetch(`http://localhost:3000/enter/delete/${value}`,{
+            const response=await fetch(`${API_BASE_URL}/enter/delete/${value}`,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",
@@ -72,7 +73,7 @@ export default function Crud(){
             alert("please enter some data to be appended in the server")
             return 
         }
-        try{const response=await fetch('http://localhost:3000/enter/posts',{
+        try{const response=await fetch(`${API_BASE_URL}/enter/posts`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -107,7 +108,7 @@ export default function Crud(){
             alert("enter a value to upadate bro 0_0")
         }
 
-        try{const response =fetch(`http://localhost:3000/enter/posts/${id}`,{
+        try{const response =fetch(`${API_BASE_URL}/enter/posts/${id}`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",

@@ -1,5 +1,5 @@
 import { useState ,useRef } from "react"
-
+const API_BASE_URL="https://tryingbackend-production.up.railway.app"
 export default function AdminCrud(){
     const [products,setProducts]=useState([])
     const idRef=useRef(null)
@@ -12,7 +12,7 @@ export default function AdminCrud(){
         e.preventDefault()
         const token=localStorage.userToken
         try{
-            const response=await fetch('http://localhost:3000/admin/read',{
+            const response=await fetch(`${API_BASE_URL}/admin/read`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -44,7 +44,7 @@ export default function AdminCrud(){
         idRef.current.value=""
         
         try{
-            const response=await fetch(`http://localhost:3000/admin/delete/${value}`,{
+            const response=await fetch(`${API_BASE_URL}/admin/delete/${value}`,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",
@@ -71,7 +71,7 @@ export default function AdminCrud(){
             alert("please enter some data to be appended in the server")
             return 
         }
-        try{const response=await fetch('http://localhost:3000/admin/create',{
+        try{const response=await fetch(`${API_BASE_URL}/admin/create`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json",
@@ -106,7 +106,7 @@ export default function AdminCrud(){
             alert("enter a value to upadate bro 0_0")
         }
 
-        try{const response =fetch(`http://localhost:3000/admin/update/${id}`,{
+        try{const response =fetch(`${API_BASE_URL}/admin/update/${id}`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
