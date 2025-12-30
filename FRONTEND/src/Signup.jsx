@@ -43,7 +43,7 @@ export default function Signup(){
         <div className="flex justify-center items-center fixed left-0 top-0 z-1000 bg-black h-full w-full backdrop-blur-[5px]">
             <div className="text-black text-center flex-col items-center justify-center bg-white p-10">
         <form onSubmit={handlesubmit} className="flex-col items-center justify-center">
-            <h1 className="text-[20px]">Login</h1>
+            <h1 className="text-[20px]">Signup</h1>
             <input type="text" 
             placeholder="username"
             value={username}
