@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const Product=require('../models/product.model.js')
 
 const router=express.Router()
-const PORT=3000
+const PORT=5000
 
 router.use(express.json())
 // to view the user's posts 

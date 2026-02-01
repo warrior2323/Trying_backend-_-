@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const jwt=require('jsonwebtoken')
 
 const router=express.Router()
-const PORT=3000
+const PORT=5000
 
 router.use(express.json())
 

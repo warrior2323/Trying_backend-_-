@@ -1,5 +1,5 @@
 import { useState ,useRef } from "react"
-const API_BASE_URL="https://tryingbackend-production.up.railway.app"
+const API_BASE_URL=import.meta.env.VITE_BACKEND_URL
 
 export default function Crud(){
     const [products,setProducts]=useState([])
